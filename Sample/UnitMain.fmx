@@ -25,6 +25,8 @@ object Form1: TForm1
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 2
     Cursor = crIBeam
+    ValueType = Float
+    KeyboardType = NumbersAndPunctuation
     Position.X = 136.000000000000000000
     Position.Y = 160.000000000000000000
   end

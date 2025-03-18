@@ -27,7 +27,7 @@ var
 implementation
 
 uses
-  LocalStorage4Delphi;
+  LocalStorage4Delphi, System.JSON;
 
 {$R *.fmx}
 
@@ -39,10 +39,18 @@ begin
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
+var
+  Oi : tjsonobject;
 begin
-   checkbox1.IsChecked := TLocalStorage4Delphi.new.GetValue('Check', true).AsBoolean;
-   Edit1.Text :=  TLocalStorage4Delphi.new.GetValue('String', 'Texto 1').AsString;
-   SpinBox1.Value :=  TLocalStorage4Delphi.new.GetValue('Number', 10).AsInteger;
+  SpinBox1.Value := TLocalStorage4Delphi.new(Application.Title + '.json').GetDouble('Number', 10.4);
+  edit1.Text     := TLocalStorage4Delphi.new(Application.Title + '.json').GetString('String', 'Texto1');
+  checkbox1.IsChecked := TLocalStorage4Delphi.new(Application.Title + '.json').GetBoolean('Check', true);
+  Oi := TLocalStorage4Delphi.new(Application.Title + '.json').GetJSONObject('JS');
+
+//   checkbox1.IsChecked := TLocalStorage4Delphi.new.GetValue('Check', true).AsBoolean;
+//   Edit1.Text :=  TLocalStorage4Delphi.new.GetValue('String', 'Texto 1').AsString;
+//   SpinBox1.Value :=  TLocalStorage4Delphi.new.GetValue('Number', 10).AsType<Double>;
+//   Teste := TLocalStorage4Delphi.new.GetValue('Number', 10).AsType<Integer>;
 end;
 
 end.
