@@ -4,7 +4,7 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   UnitMain in 'UnitMain.pas' {Form1},
-  LocalStorage4Delphi in '..\src\LocalStorage4Delphi.pas';
+  LocalStorage4Pascal in '..\src\LocalStorage4Pascal.pas';
 
 {$R *.res}
 
