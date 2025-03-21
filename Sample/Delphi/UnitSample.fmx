@@ -1,0 +1,332 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 640
+  ClientWidth = 360
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object LayAppBar: TLayout
+    Align = Top
+    Size.Width = 360.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object AppBar: TRectangle
+      Align = Client
+      Fill.Color = claWhite
+      Size.Width = 360.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object SombraAppBAr: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 45.000000000000000000
+        Softness = 0.300000011920929000
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+      end
+      object lblTitle: TLabel
+        Align = Client
+        StyledSettings = [Family, FontColor]
+        Size.Width = 360.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.StyleExt = {00060000000000000004000000}
+        TextSettings.HorzAlign = Center
+        Text = 'LocalStorage4Pascal - Delphi sample'
+        TabOrder = 0
+      end
+    end
+  end
+  object LayMain: TLayout
+    Align = Client
+    Size.Width = 360.000000000000000000
+    Size.Height = 590.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Layout1: TLayout
+      Align = Top
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      object Label1: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'Campo booleano: '
+        TabOrder = 0
+      end
+      object chBool: TCheckBox
+        Align = Client
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Size.Width = 220.000000000000000000
+        Size.Height = 20.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Dark mode'
+      end
+    end
+    object Layout2: TLayout
+      Align = Top
+      Position.Y = 40.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object Label2: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'Campo string: '
+        TabOrder = 0
+      end
+      object EdString: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 1
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 220.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Layout3: TLayout
+      Align = Top
+      Position.Y = 80.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object Label3: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'Campo float: '
+        TabOrder = 0
+      end
+      object EdFloat: TSpinBox
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 1
+        Cursor = crIBeam
+        ValueType = Float
+        KeyboardType = NumbersAndPunctuation
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 10.000000000000000000
+        Size.Width = 220.000000000000000000
+        Size.Height = 20.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Layout4: TLayout
+      Align = Top
+      Position.Y = 120.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 121.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Label4: TLabel
+        Align = Top
+        Size.Width = 360.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = 'Registro JSON:'
+        TabOrder = 0
+      end
+      object Layout5: TLayout
+        Align = Top
+        Position.Y = 33.000000000000000000
+        Size.Width = 360.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        object Label5: TLabel
+          Align = Left
+          Size.Width = 120.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Nome: '
+          TabOrder = 0
+        end
+        object EdJSNome: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Size.Width = 220.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object Layout6: TLayout
+        Align = Top
+        Position.Y = 73.000000000000000000
+        Size.Width = 360.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Label6: TLabel
+          Align = Left
+          Size.Width = 120.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Apelido: '
+          TabOrder = 0
+        end
+        object EdJSApelido: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Size.Width = 220.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object Layout7: TLayout
+      Align = Top
+      Position.Y = 309.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      object btSalvar: TButton
+        Align = Center
+        Size.Width = 219.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Salvar no LocalStorage'
+        TextSettings.Trimming = None
+        OnClick = btSalvarClick
+      end
+    end
+    object Layout8: TLayout
+      Align = Top
+      Position.Y = 349.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      object btLimpar: TButton
+        Align = Center
+        Size.Width = 219.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Limpar LocalStorage'
+        TextSettings.Trimming = None
+        OnClick = btLimparClick
+      end
+    end
+    object Layout9: TLayout
+      Align = Top
+      Position.Y = 389.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object LibVersion: TLabel
+        Align = Center
+        Size.Width = 312.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        TabOrder = 0
+      end
+    end
+    object Layout10: TLayout
+      Align = Top
+      Position.Y = 241.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 68.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object Edit1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Left
+        TabOrder = 2
+        Position.Y = 33.000000000000000000
+        Size.Width = 89.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Edit2: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Left
+        TabOrder = 1
+        Position.X = 89.000000000000000000
+        Position.Y = 33.000000000000000000
+        Size.Width = 89.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Edit3: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Left
+        TabOrder = 0
+        Position.X = 178.000000000000000000
+        Position.Y = 33.000000000000000000
+        Size.Width = 89.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Layout11: TLayout
+        Align = Top
+        Size.Width = 360.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        object Label8: TLabel
+          Align = Left
+          Size.Width = 81.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Array JSON:'
+          TabOrder = 0
+        end
+        object Label7: TLabel
+          Align = Client
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Size.Width = 259.000000000000000000
+          Size.Height = 33.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+        end
+      end
+    end
+  end
+end

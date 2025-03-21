@@ -14,14 +14,6 @@ uses
   jsonparser
   {$ELSE}
   System.JSON
-  {$ENDIF},
-  {$IFDEF MSWINDOWS}
-  Windows,
-  {$ENDIF}
-  {$IFDEF FMX}
-  FMX.Dialogs
-  {$ELSE}
-  Vcl.Dialogs
   {$ENDIF};
 
 type
@@ -35,6 +27,7 @@ type
     procedure SetValue(const Key: string; const Value: Double); overload;
     procedure SetValue(const Key: string; const Value: TJSONObject); overload;
     procedure SetValue(const Key: string; const Value: TJSONArray); overload;
+    procedure SetValue(const Key: string; const Value: Int64); overload;
     {$endregion}
 
     {$region 'GetValue Methods'}
@@ -44,11 +37,14 @@ type
     function GetDouble(const Key: string; const Default: Double = 0.0): Double;
     function GetJSONObject(const Key: string; const Default: TJSONObject = nil): TJSONObject;
     function GetJSONArray(const Key: string; const Default: TJSONArray = nil): TJSONArray;
+    function GetInt64(const key: string; const Default: Int64): Int64;
     {$endregion}
 
     function RemoveValue(const Key: string): Boolean;
     function KeyExists(const Key: string): Boolean;
     function Clear: Boolean;
+
+    function Version : string;
   end;
 
   TLocalStorage4Pascal = class(TInterfacedObject, iLocalStorage4Pascal)
@@ -61,7 +57,6 @@ type
     function GetValue<T>(const key: string; Default: T): T;
     function SetValue<T>(const key: string; const Value: T): T; overload;
   public
-    class var FInstance: iLocalStorage4Pascal;
     constructor Create(const FileName: string = 'LocalStorage.json');
     destructor Destroy; override;
     class function New(const FileName: string = 'LocalStorage.json'): iLocalStorage4Pascal;
@@ -71,6 +66,7 @@ type
     procedure SetValue(const Key: string; const Value: Double); overload;
     procedure SetValue(const Key: string; const Value: TJSONObject); overload;
     procedure SetValue(const Key: string; const Value: TJSONArray); overload;
+    procedure SetValue(const Key: string; const Value: Int64); overload;
 
     function GetString(const Key: string; const Default: string = ''): string;
     function GetInteger(const Key: string; const Default: Integer = 0): Integer;
@@ -78,15 +74,43 @@ type
     function GetDouble(const Key: string; const Default: Double = 0.0): Double;
     function GetJSONObject(const Key: string; const Default: TJSONObject = nil): TJSONObject;
     function GetJSONArray(const Key: string; const Default: TJSONArray = nil): TJSONArray;
+    function GetInt64(const key: string; const Default: Int64): Int64;
+
     function RemoveValue(const Key: string): Boolean;
     function KeyExists(const Key: string): Boolean;
     function Clear: Boolean;
+
+    function Version : string;
   end;
+
+  function InitLocalStorage4Pascal(const FileName: string = 'localstorage.json') : iLocalStorage4Pascal;
+
+var
+  LocalStorage4Delphi  : iLocalStorage4Pascal;
+  LocalStorage4Lazarus : iLocalStorage4Pascal;
+
+const
+  LocaStorage4Pascal_Version = '1.0.0';
 
 implementation
 
 uses
   System.IOUtils, System.TypInfo, System.Rtti;
+
+function InitLocalStorage4Pascal(const FileName: string = 'localstorage.json') : iLocalStorage4Pascal;
+begin
+  {$IFDEF FPC}
+  if (not Assigned(LocalStorage4Lazarus)) then
+   LocalStorage4Lazarus := TLocalStorage4Pascal.New(FileName);
+
+  Result := LocalStorage4Lazarus;
+  {$else}
+  if (not Assigned(LocalStorage4Delphi)) then
+   LocalStorage4Delphi := TLocalStorage4Pascal.New(FileName);
+
+  Result := LocalStorage4Delphi;
+  {$endif}
+end;
 
 { TLocalStorage4Pascal }
 
@@ -101,18 +125,25 @@ begin
    end;
 end;
 
+procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Int64);
+begin
+  SetValue<Int64>(key, Value);
+end;
+
 function TLocalStorage4Pascal.SetValue<T>(const key: string; const Value: T): T;
 var
   StoredValue: TValue;
 begin
+  FStorage.RemovePair(key).Free;
+
   StoredValue := TValue.From<T>(Value);
 
   if StoredValue.IsObject then
     begin
       if StoredValue.AsObject is TJSONObject then
-        FStorage.AddPair(key, TJSONObject(StoredValue.AsObject))
+        FStorage.AddPair(key, TJSONObject(StoredValue.AsObject).Clone as TJSONObject)
       else if StoredValue.AsObject is TJSONArray then
-        FStorage.AddPair(key, TJSONArray(StoredValue.AsObject));
+        FStorage.AddPair(key, TJSONArray(StoredValue.AsObject).Clone as TJSONArray);
     end
    else
     begin
@@ -120,6 +151,8 @@ begin
       case PTypeInfo(TypeInfo(T))^.Kind of
         tkInteger:
           FStorage.AddPair(key, StoredValue.AsInteger);
+        tkInt64:
+          FStorage.AddPair(key, StoredValue.AsInt64);
         tkFloat:
           FStorage.AddPair(key, StoredValue.AsExtended);
         tkUString, tkString, tkLString:
@@ -134,7 +167,13 @@ begin
       end;
     end;
 
-  Result := T(value);
+    SaveToFile;
+    Result := T(value);
+end;
+
+function TLocalStorage4Pascal.Version: string;
+begin
+  Result := LocaStorage4Pascal_Version;
 end;
 
 function TLocalStorage4Pascal.GetStoragePath(const FileName: string): string;
@@ -201,26 +240,44 @@ begin
 end;
 
 destructor TLocalStorage4Pascal.Destroy;
+var
+ i, a: integer;
+ l : TJSONObject;
 begin
   SaveToFile;
-  FStorage.Free;
+//  for I := 0 to FStorage.Count - 1 do
+//   begin
+//    if(FStorage.Pairs[i].JsonValue is TJSONObject)then
+//     begin
+//     L := FStorage.Pairs[i].JsonValue as TJSONObject;
+//     for a := 0 to L.Count - 1 do
+//       L.RemovePair(l.Pairs[a].JsonString.ToString).Free;
+//     end;
+//
+//    FStorage.RemovePair(FStorage.Pairs[i].JsonString.ToString).Free;
+//   end;
+  FreeAndNil(FStorage);
   inherited;
 end;
 
 class function TLocalStorage4Pascal.New(const FileName: string): iLocalStorage4Pascal;
 begin
-  if(not Assigned(FInstance))then
-    FInstance := TLocalStorage4Pascal.Create(FileName);
-  Result := FInstance;
+  Result := TLocalStorage4Pascal.Create(FileName);
 end;
 
 function TLocalStorage4Pascal.Clear: Boolean;
 var
   i: Integer;
 begin
-  for i := FStorage.Count - 1 downto 0 do
-    FStorage.RemovePair(FStorage.Pairs[i].JsonString.Value); // Remove um por um
-  SaveToFile;
+  Result := False;
+  try
+    for i := FStorage.Count - 1 downto 0 do
+      FStorage.RemovePair(FStorage.Pairs[i].JsonString.Value).Free; // Libera cada item
+    SaveToFile;
+    Result := True;
+  except
+    // Tratamento de erro, se necessário
+  end;
 end;
 
 function TLocalStorage4Pascal.GetBoolean(const Key: string;const Default: Boolean): Boolean;
@@ -233,6 +290,11 @@ begin
   Result := GetValue<Double>(key, Default);
 end;
 
+function TLocalStorage4Pascal.GetInt64(const key: string;const Default: Int64): Int64;
+begin
+  Result := GetValue<Int64>(key, Default);
+end;
+
 function TLocalStorage4Pascal.GetInteger(const Key: string;const Default: Integer): Integer;
 begin
   Result := GetValue<integer>(key, Default);
@@ -240,12 +302,16 @@ end;
 
 function TLocalStorage4Pascal.GetJSONArray(const Key: string;const Default: TJSONArray): TJSONArray;
 begin
-  Result := GetValue<TJSONArray>(key, Default);
+  Result := GetValue<TJSONArray>(key, Default).Clone as TJSONArray;
+
+  Default.Free;
 end;
 
 function TLocalStorage4Pascal.GetJSONObject(const Key: string;const Default: TJSONObject): TJSONObject;
 begin
-  Result := GetValue<TJSONObject>(key, Default);
+  Result := GetValue<TJSONObject>(key, Default).Clone as TJSONObject;
+
+  Default.Free;
 end;
 
 function TLocalStorage4Pascal.GetString(const Key, Default: string): string;
@@ -259,44 +325,48 @@ begin
 end;
 
 function TLocalStorage4Pascal.RemoveValue(const Key: string): Boolean;
+var
+  Pair: TJSONPair;
 begin
-  Result := assigned(FStorage.RemovePair(key));
+  Pair := FStorage.RemovePair(Key);
+
+  Result := Assigned(Pair);
+
+  if Result then
+    Pair.Free;  // Libera o par removido para evitar vazamento
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: Integer);
 begin
-  FStorage.RemovePair(key);
   SetValue<integer>(key, value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key, Value: string);
 begin
-  FStorage.RemovePair(key);
   SetValue<string>(key, value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: TJSONArray);
 begin
-  FStorage.RemovePair(key);
   SetValue<TJSONArray>(key, value);
+
+  Value.Free;
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: TJSONObject);
 begin
-  FStorage.RemovePair(key);
   SetValue<TJSONObject>(key, value);
+
+  Value.Free;
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Double);
 begin
-  FStorage.RemovePair(key);
   SetValue<double>(key, value);
 end;
 
-procedure TLocalStorage4Pascal.SetValue(const Key: string;
-  const Value: Boolean);
+procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: Boolean);
 begin
-  FStorage.RemovePair(key);
   SetValue<Boolean>(key, value);
 end;
 
