@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="SampleLazarus.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="3"/>
+        <CursorPos X="46" Y="22"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitMain"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="159"/>
+        <CursorPos X="5" Y="170"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="18">
+      <Position>
+        <Filename Value="SampleLazarus.lpr"/>
+        <Caret Line="22" Column="46" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="99" Column="11" TopLine="88"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="103" Column="11" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="99" Column="5" TopLine="80"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="97" Column="3" TopLine="95"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="136" Column="26" TopLine="118"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="135" Column="51" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="134" Column="19" TopLine="123"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="135" Column="29" TopLine="125"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="125" Column="24" TopLine="123"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="99" Column="10" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="59" Column="48" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="124" Column="30" TopLine="118"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="169" Column="13" TopLine="156"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="132" Column="7" TopLine="119"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="166" Column="8" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="164" Column="9" TopLine="150"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="165" Column="11" TopLine="148"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="170" Column="23" TopLine="159"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

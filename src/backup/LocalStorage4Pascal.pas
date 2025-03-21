@@ -167,7 +167,7 @@ end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Int64);
 begin
-  //SetValue<Int64>(key, Value);
+  SetValue<Int64>(key, Value);
 end;
 
 function TLocalStorage4Pascal.SetValue<T>(const key: string; const Value: T): T;

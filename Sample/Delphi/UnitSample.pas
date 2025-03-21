@@ -132,9 +132,9 @@ begin
 
   ArrayJS := LocalStorage4Delphi.GetJSONArray('JSArray', ArrayJS);
 
-  if(ArrayJS.Size > 0)then
+  if(ArrayJS.Count > 0)then
    begin
-     for Item := 0 to ArrayJS.Size - 1 do
+     for Item := 0 to ArrayJS.Count - 1 do
         begin
           if(item = 0)then
            begin
