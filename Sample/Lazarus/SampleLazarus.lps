@@ -11,16 +11,18 @@
         <EditorIndex Value="1"/>
         <TopLine Value="3"/>
         <CursorPos X="46" Y="22"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unitmain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="unitMain"/>
-        <UsageCount Value="20"/>
+        <CursorPos X="9" Y="4"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -29,88 +31,141 @@
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="159"/>
-        <CursorPos X="5" Y="170"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="136"/>
+        <CursorPos X="9" Y="155"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\rtl-objpas\src\inc\rtti.pp"/>
+        <UnitName Value="Rtti"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="163"/>
+        <CursorPos X="54" Y="154"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="18">
+    <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="SampleLazarus.lpr"/>
-        <Caret Line="22" Column="46" TopLine="3"/>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="102" Column="3" TopLine="89"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="99" Column="11" TopLine="88"/>
+        <Caret Line="347" Column="43" TopLine="332"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="103" Column="11" TopLine="92"/>
+        <Caret Line="564" Column="5"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="99" Column="5" TopLine="80"/>
+        <Caret Line="155" Column="9" TopLine="130"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="97" Column="3" TopLine="95"/>
+        <Caret Line="151" Column="9" TopLine="126"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="136" Column="26" TopLine="118"/>
+        <Caret Line="135" Column="28" TopLine="122"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="135" Column="51" TopLine="125"/>
+        <Caret Line="149" Column="9" TopLine="124"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="134" Column="19" TopLine="123"/>
+        <Caret Line="170" Column="9" TopLine="130"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="135" Column="29" TopLine="125"/>
+        <Caret Line="151" Column="28" TopLine="138"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="125" Column="24" TopLine="123"/>
+        <Caret Line="153" Column="9" TopLine="128"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="99" Column="10" TopLine="92"/>
+        <Caret Line="133" TopLine="122"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="59" Column="48" TopLine="50"/>
+        <Caret Line="135" Column="30" TopLine="122"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="124" Column="30" TopLine="118"/>
+        <Caret Line="512" Column="11" TopLine="499"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="169" Column="13" TopLine="156"/>
+        <Caret Line="135" Column="30" TopLine="122"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="132" Column="7" TopLine="119"/>
+        <Caret Line="574" Column="16" TopLine="556"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="166" Column="8" TopLine="153"/>
+        <Caret Line="135" Column="30" TopLine="122"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="164" Column="9" TopLine="150"/>
+        <Caret Line="144" Column="32" TopLine="129"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="165" Column="11" TopLine="148"/>
+        <Caret Line="139" Column="30" TopLine="126"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="170" Column="23" TopLine="159"/>
+        <Caret Line="137" Column="30" TopLine="124"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="135" Column="30" TopLine="122"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="144" Column="32" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="141" Column="30" TopLine="129"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="139" Column="30" TopLine="126"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="137" Column="30" TopLine="124"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="135" Column="30" TopLine="122"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="125" TopLine="114"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="135" Column="30" TopLine="122"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="155" Column="9" TopLine="130"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="130" Column="5" TopLine="116"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
+        <Caret Line="57" Column="74" TopLine="57"/>
       </Position>
     </JumpHistory>
     <RunParams>
