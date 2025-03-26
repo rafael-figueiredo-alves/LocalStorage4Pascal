@@ -1,9 +1,62 @@
 object Form1: TForm1
   Left = 313
-  Height = 599
+  Height = 702
   Top = 180
-  Width = 447
+  Width = 443
   Caption = 'Form1'
+  ClientHeight = 702
+  ClientWidth = 443
+  Color = clWhite
   DesignTimePPI = 120
   LCLVersion = '2.2.6.0'
+  object Shape1: TShape
+    Left = 0
+    Height = 48
+    Top = 0
+    Width = 443
+    Align = alTop
+  end
+  object Label1: TLabel
+    Left = 0
+    Height = 48
+    Top = 0
+    Width = 439
+    Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = False
+    BorderSpacing.CellAlignHorizontal = ccaCenter
+    BorderSpacing.CellAlignVertical = ccaCenter
+    Caption = 'LocalStorage4Pascal - Lazarus Sample'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -20
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Layout = tlCenter
+    ParentColor = False
+    ParentFont = False
+  end
+  object chBool: TCheckBox
+    Left = 20
+    Height = 44
+    Top = 48
+    Width = 403
+    Align = alTop
+    BorderSpacing.Left = 20
+    BorderSpacing.Right = 20
+    BorderSpacing.Bottom = 20
+    BorderSpacing.InnerBorder = 10
+    BorderSpacing.CellAlignHorizontal = ccaCenter
+    Caption = 'Dark mode'
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 50
+    Height = 31
+    Top = 365
+    Width = 94
+    Caption = 'Salvar'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
 end

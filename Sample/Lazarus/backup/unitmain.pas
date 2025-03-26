@@ -31,9 +31,6 @@ implementation
 
 {$R *.lfm}
 
-uses
-  LocalStorage4Pascal;
-
 { TForm1 }
 
 procedure TForm1.Button1Click(Sender: TObject);

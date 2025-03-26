@@ -19,7 +19,7 @@ implementation
 
 uses
   {$IFDEF FPC}
-  LocalStorage4Pascal.Lazarus
+  LocalStorage4Pascal.Lazarus;
   {$ELSE}
   LocalStorage4Pascal.Delphi;
   {$ENDIF}

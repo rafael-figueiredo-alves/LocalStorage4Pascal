@@ -20,6 +20,7 @@ type
     function GetStoragePath(const FileName: string = 'localstorage.json'): string;
     procedure LoadFromFile;
     procedure SaveToFile;
+    function SetValue<T>(const Key: string; const Value: T): T; // Mantemos genérico apenas para SetValue
   public
     constructor Create(const FileName: string = 'LocalStorage.json');
     destructor Destroy; override;
@@ -295,47 +296,27 @@ end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Integer);
 begin
-  FStorage.Delete(Key);
-
-  FStorage.Add(Key, Value);
-
-  SaveToFile;
+  SetValue(Key, Value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key, Value: string);
 begin
-  FStorage.Delete(Key);
-
-  FStorage.Add(Key, Value);
-
-  SaveToFile;
+  SetValue(Key, Value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: TJSONArray);
 begin
-  FStorage.Delete(Key);
-
-  FStorage.Add(Key, Value);
-
-  SaveToFile;
+  SetValue(Key, Value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: TJSONObject);
 begin
-  FStorage.Delete(Key);
-
-  FStorage.Add(Key, Value);
-
-  SaveToFile;
+  SetValue(Key, Value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Double);
 begin
-  FStorage.Delete(Key);
-
-  FStorage.Add(Key, Value);
-
-  SaveToFile;
+  SetValue(Key, Value);
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Boolean);
@@ -349,11 +330,7 @@ end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: Int64);
 begin
-  FStorage.Delete(Key);
-
-  FStorage.Add(Key, Value);
-
-  SaveToFile;
+  SetValue(Key, Value);
 end;
 
 {$ENDIF}
