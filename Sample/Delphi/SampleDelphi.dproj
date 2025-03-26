@@ -217,6 +217,9 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="..\..\src\LocalStorage4Pascal.pas"/>
+        <DCCReference Include="..\..\src\LocalStorage4Pascal.Delphi.pas"/>
+        <DCCReference Include="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
+        <DCCReference Include="..\..\src\LocalStorage4Pascal.Interfaces.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
