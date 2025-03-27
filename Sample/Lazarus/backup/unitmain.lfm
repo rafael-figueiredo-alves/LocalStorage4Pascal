@@ -8,6 +8,7 @@ object Form1: TForm1
   ClientWidth = 443
   Color = clWhite
   DesignTimePPI = 120
+  OnCreate = FormCreate
   LCLVersion = '2.2.6.0'
   object Shape1: TShape
     Left = 0
@@ -36,27 +37,366 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object chBool: TCheckBox
-    Left = 20
-    Height = 44
-    Top = 48
-    Width = 403
+  object BtSalvar: TButton
+    Left = 30
+    Height = 39
+    Top = 530
+    Width = 383
     Align = alTop
-    BorderSpacing.Left = 20
-    BorderSpacing.Right = 20
-    BorderSpacing.Bottom = 20
-    BorderSpacing.InnerBorder = 10
-    BorderSpacing.CellAlignHorizontal = ccaCenter
-    Caption = 'Dark mode'
+    BorderSpacing.Left = 30
+    BorderSpacing.Top = 10
+    BorderSpacing.Right = 30
+    BorderSpacing.Bottom = 5
+    Caption = 'Salvar no LocalStorage'
+    OnClick = BtSalvarClick
     TabOrder = 0
   end
-  object Button1: TButton
-    Left = 50
-    Height = 31
-    Top = 365
-    Width = 94
-    Caption = 'Salvar'
-    OnClick = Button1Click
+  object Panel1: TPanel
+    Left = 0
+    Height = 63
+    Top = 48
+    Width = 443
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 443
     TabOrder = 1
+    object Label2: TLabel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 148
+      Align = alLeft
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Campo booleano:'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object chBool: TCheckBox
+      Left = 168
+      Height = 63
+      Top = 0
+      Width = 275
+      Align = alClient
+      AutoSize = False
+      BorderSpacing.Left = 20
+      BorderSpacing.CellAlignHorizontal = ccaCenter
+      Caption = 'Dark mode'
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 63
+    Top = 111
+    Width = 443
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 443
+    TabOrder = 2
+    object Label3: TLabel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 148
+      Align = alLeft
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Campo String:'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object EdString: TEdit
+      Left = 168
+      Height = 43
+      Top = 10
+      Width = 265
+      Align = alClient
+      BorderSpacing.Left = 20
+      BorderSpacing.Top = 10
+      BorderSpacing.Right = 10
+      BorderSpacing.Bottom = 10
+      BorderSpacing.CellAlignHorizontal = ccaCenter
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -20
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      TabOrder = 0
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Height = 63
+    Top = 174
+    Width = 443
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 443
+    TabOrder = 3
+    object Label4: TLabel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 148
+      Align = alLeft
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Campo float:'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object EdFloat: TFloatSpinEdit
+      Left = 168
+      Height = 43
+      Top = 10
+      Width = 265
+      Align = alClient
+      BorderSpacing.Left = 20
+      BorderSpacing.Top = 10
+      BorderSpacing.Right = 10
+      BorderSpacing.Bottom = 10
+      BorderSpacing.CellAlignHorizontal = ccaCenter
+      TabOrder = 0
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Height = 155
+    Top = 237
+    Width = 443
+    Align = alTop
+    Caption = 'Registro Objeto JSON'
+    ClientHeight = 130
+    ClientWidth = 439
+    TabOrder = 4
+    object Panel4: TPanel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 439
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 63
+      ClientWidth = 439
+      TabOrder = 0
+      object Label5: TLabel
+        Left = 0
+        Height = 63
+        Top = 0
+        Width = 148
+        Align = alLeft
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Nome:'
+        Layout = tlCenter
+        ParentColor = False
+      end
+      object EdNome: TEdit
+        Left = 168
+        Height = 43
+        Top = 10
+        Width = 261
+        Align = alClient
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
+        BorderSpacing.CellAlignHorizontal = ccaCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -20
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object Panel5: TPanel
+      Left = 0
+      Height = 63
+      Top = 63
+      Width = 439
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 63
+      ClientWidth = 439
+      TabOrder = 1
+      object Label6: TLabel
+        Left = 0
+        Height = 63
+        Top = 0
+        Width = 148
+        Align = alLeft
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Apelido:'
+        Layout = tlCenter
+        ParentColor = False
+      end
+      object EdApelido: TEdit
+        Left = 168
+        Height = 43
+        Top = 10
+        Width = 261
+        Align = alClient
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
+        BorderSpacing.CellAlignHorizontal = ccaCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -20
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+  end
+  object Panel6: TPanel
+    Left = 0
+    Height = 128
+    Top = 392
+    Width = 443
+    Align = alTop
+    ClientHeight = 128
+    ClientWidth = 443
+    TabOrder = 5
+    object Panel7: TPanel
+      Left = 1
+      Height = 63
+      Top = 1
+      Width = 441
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 63
+      ClientWidth = 441
+      TabOrder = 0
+      object Label7: TLabel
+        Left = 0
+        Height = 63
+        Top = 0
+        Width = 148
+        Align = alLeft
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = 'Array JSON:'
+        Layout = tlCenter
+        ParentColor = False
+      end
+      object displayARRAY: TLabel
+        Left = 168
+        Height = 63
+        Top = 0
+        Width = 263
+        Align = alClient
+        AutoSize = False
+        BorderSpacing.Left = 20
+        BorderSpacing.Right = 10
+        Layout = tlCenter
+        ParentColor = False
+      end
+    end
+    object Panel8: TPanel
+      Left = 1
+      Height = 63
+      Top = 64
+      Width = 441
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 63
+      ClientWidth = 441
+      TabOrder = 1
+      object EdNum1: TEdit
+        Left = 20
+        Height = 43
+        Top = 10
+        Width = 116
+        Align = alLeft
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
+        BorderSpacing.CellAlignHorizontal = ccaCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -20
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 0
+      end
+      object EdNum2: TEdit
+        Left = 156
+        Height = 43
+        Top = 10
+        Width = 116
+        Align = alLeft
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
+        BorderSpacing.CellAlignHorizontal = ccaCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -20
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 1
+      end
+      object EdNum3: TEdit
+        Left = 292
+        Height = 43
+        Top = 10
+        Width = 116
+        Align = alLeft
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
+        BorderSpacing.CellAlignHorizontal = ccaCenter
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -20
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 2
+      end
+    end
+  end
+  object BtLimpar: TButton
+    Left = 30
+    Height = 39
+    Top = 579
+    Width = 383
+    Align = alTop
+    BorderSpacing.Left = 30
+    BorderSpacing.Top = 10
+    BorderSpacing.Right = 30
+    BorderSpacing.Bottom = 5
+    Caption = 'Limpar LocalStorage'
+    OnClick = BtLimparClick
+    TabOrder = 6
+  end
+  object LblVersao: TLabel
+    Left = 30
+    Height = 28
+    Top = 628
+    Width = 383
+    Align = alTop
+    Alignment = taCenter
+    BorderSpacing.Left = 30
+    BorderSpacing.Top = 10
+    BorderSpacing.Right = 30
+    BorderSpacing.Bottom = 10
+    Caption = 'LblVersao'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -20
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
   end
 end

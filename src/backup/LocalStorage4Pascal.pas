@@ -8,7 +8,7 @@ uses
 type
 
   TLocalStorage = class
-    class function InitLocalStorage4Pascal(const FileName: string = 'localstorage.json'): iLocalStorage4Pascal;
+    class function InitLocalStorage4Pascal(const FileName: string = 'localstorage.json'; SaveToFileDefaultValues: boolean = false): iLocalStorage4Pascal;
   end;
 
 var
@@ -19,21 +19,21 @@ implementation
 
 uses
   {$IFDEF FPC}
-  LocalStorage4Pascal.Lazarus
+  LocalStorage4Pascal.Lazarus;
   {$ELSE}
   LocalStorage4Pascal.Delphi;
   {$ENDIF}
 
-class function TLocalStorage.InitLocalStorage4Pascal(const FileName: string = 'localstorage.json'): iLocalStorage4Pascal;
+class function TLocalStorage.InitLocalStorage4Pascal(const FileName: string = 'localstorage.json'; SaveToFileDefaultValues: boolean = false): iLocalStorage4Pascal;
 begin
   {$IFDEF FPC}
   if not Assigned(LocalStorage4Lazarus) then
-    LocalStorage4Lazarus := TLocalStorage4Pascal.New(FileName);
+    LocalStorage4Lazarus := TLocalStorage4Pascal.New(FileName, saveToFileDefaultValues);
 
   Result := LocalStorage4Lazarus;
   {$ELSE}
   if not Assigned(LocalStorage4Delphi) then
-    LocalStorage4Delphi := TLocalStorage4Pascal.New(FileName);
+    LocalStorage4Delphi := TLocalStorage4Pascal.New(FileName, SaveToFileDefaultValues);
 
   Result := LocalStorage4Delphi;
   {$ENDIF}

@@ -11,7 +11,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="3"/>
         <CursorPos X="17" Y="22"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -21,19 +21,20 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="unitMain"/>
-        <TopLine Value="26"/>
-        <CursorPos X="23" Y="35"/>
-        <UsageCount Value="24"/>
+        <TopLine Value="64"/>
+        <CursorPos X="69" Y="172"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="20"/>
-        <CursorPos X="6"/>
-        <UsageCount Value="24"/>
+        <TopLine Value="17"/>
+        <CursorPos X="86" Y="36"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -42,147 +43,154 @@
         <EditorIndex Value="5"/>
         <TopLine Value="163"/>
         <CursorPos X="54" Y="154"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="61"/>
-        <CursorPos X="25" Y="62"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="306"/>
+        <CursorPos X="30" Y="282"/>
+        <FoldState Value=" T3iK03327 pkLlI0G-"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\..\src\LocalStorage4Pascal.Interfaces.pas"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="11"/>
-        <CursorPos X="15" Y="24"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="9"/>
+        <CursorPos X="69" Y="28"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="195"/>
+        <CursorPos X="23" Y="206"/>
+        <UsageCount Value="10"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="125" TopLine="114"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="135" Column="30" TopLine="122"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="155" Column="9" TopLine="130"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="130" Column="5" TopLine="116"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.pas"/>
-        <Caret Line="57" Column="74" TopLine="57"/>
-      </Position>
-      <Position>
-        <Filename Value="SampleLazarus.lpr"/>
-        <Caret Line="22" Column="17" TopLine="3"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="19" Column="7" TopLine="11"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="20" Column="7" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="21" Column="7" TopLine="15"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="19" Column="22" TopLine="8"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="21" Column="5" TopLine="8"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="376" Column="5"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="57" Column="12" TopLine="37"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="58" Column="11" TopLine="40"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="57" Column="11" TopLine="47"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="121" Column="22" TopLine="110"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="56" Column="11" TopLine="47"/>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="44" Column="23" TopLine="35"/>
       </Position>
       <Position>
         <Filename Value="unitmain.pas"/>
-        <Caret Line="4" Column="9"/>
+        <Caret Line="45" Column="23" TopLine="36"/>
       </Position>
       <Position>
         <Filename Value="unitmain.pas"/>
-        <Caret Line="22" Column="33" TopLine="10"/>
+        <Caret Line="48" Column="23" TopLine="48"/>
       </Position>
       <Position>
         <Filename Value="unitmain.pas"/>
-        <Caret Line="38" Column="24" TopLine="30"/>
+        <Caret Line="51" Column="23" TopLine="51"/>
       </Position>
       <Position>
         <Filename Value="unitmain.pas"/>
-        <Caret Line="35" Column="23" TopLine="26"/>
+        <Caret Line="52" Column="23" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="53" Column="23" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="52" Column="23" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="55" Column="23" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="54" Column="23" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="55" Column="23" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="58" Column="23" TopLine="58"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="57" Column="23" TopLine="57"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="58" Column="23" TopLine="58"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="59" Column="23" TopLine="59"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="60" Column="23" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="61" Column="23" TopLine="61"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="60" Column="23" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="61" Column="23" TopLine="61"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="85" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="83" Column="44" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="74" Column="79" TopLine="63"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="49" Column="40" TopLine="39"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="96" Column="15" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="63" Column="30" TopLine="55"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="134" Column="66" TopLine="118"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="136" Column="31" TopLine="126"/>
+      </Position>
+      <Position>
+        <Filename Value="unitmain.pas"/>
+        <Caret Line="137" Column="48" TopLine="125"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="369" TopLine="357"/>
+        <Caret Line="70" Column="70" TopLine="173"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="28" Column="37" TopLine="20"/>
+        <Caret Line="29" Column="15" TopLine="26"/>
       </Position>
       <Position>
         <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="369" Column="20" TopLine="357"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="68" TopLine="57"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="367" Column="9" TopLine="354"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="30" Column="15" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="68" TopLine="30"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="368" Column="26" TopLine="357"/>
-      </Position>
-      <Position>
-        <Filename Value="..\..\src\LocalStorage4Pascal.Lazarus.pas"/>
-        <Caret Line="370" Column="14" TopLine="358"/>
+        <Caret Line="26" Column="110" TopLine="13"/>
       </Position>
     </JumpHistory>
     <RunParams>

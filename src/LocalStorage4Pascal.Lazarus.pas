@@ -17,13 +17,14 @@ type
   private
     FStorage: TJSONObject;
     FFilePath: string;
+    fSaveToFileDefaultValues: Boolean;
     function GetStoragePath(const FileName: string = 'localstorage.json'): string;
     procedure LoadFromFile;
     procedure SaveToFile;
   public
-    constructor Create(const FileName: string = 'LocalStorage.json');
+    constructor Create(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: Boolean = false);
     destructor Destroy; override;
-    class function New(const FileName: string = 'LocalStorage.json'): iLocalStorage4Pascal;
+    class function New(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: Boolean = false): iLocalStorage4Pascal;
     procedure SetValue(const Key: string; const Value: string); overload;
     procedure SetValue(const Key: string; const Value: Integer); overload;
     procedure SetValue(const Key: string; const Value: Boolean); overload;
@@ -67,7 +68,7 @@ end;
 
 function TLocalStorage4Pascal.GetStoragePath(const FileName: string): string;
 begin
-  Result := IncludeTrailingPathDelimiter(GetUserDir) + FileName;
+  Result := IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0))) + FileName;
 end;
 
 procedure TLocalStorage4Pascal.LoadFromFile;
@@ -136,10 +137,11 @@ begin
   end;
 end;
 
-constructor TLocalStorage4Pascal.Create(const FileName: string);
+constructor TLocalStorage4Pascal.Create(const FileName: string; SaveToFileDefaultValues: Boolean);
 begin
   FFilePath := GetStoragePath(FileName);
   FStorage := TJSONObject.Create;
+  fSaveToFileDefaultValues := SaveToFileDefaultValues;
   LoadFromFile;
 end;
 
@@ -150,9 +152,9 @@ begin
   inherited;
 end;
 
-class function TLocalStorage4Pascal.New(const FileName: string): iLocalStorage4Pascal;
+class function TLocalStorage4Pascal.New(const FileName: string; SaveToFileDefaultValues: Boolean): iLocalStorage4Pascal;
 begin
-  Result := TLocalStorage4Pascal.Create(FileName);
+  Result := TLocalStorage4Pascal.Create(FileName, SaveToFileDefaultValues);
 end;
 
 function TLocalStorage4Pascal.Clear: Boolean;
@@ -162,7 +164,7 @@ begin
   Result := False;
   try
     for i := FStorage.Count - 1 downto 0 do
-      FStorage.Delete(i); // Corrigido: adicionado ponto e vírgula
+      FStorage.Delete(i);
     SaveToFile;
     Result := True;
   except
@@ -180,7 +182,8 @@ begin
     Result := JsonData.AsBoolean
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     Result := Default;
   end;
 end;
@@ -194,7 +197,8 @@ begin
     Result := JsonData.AsFloat
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     Result := Default;
   end;
 end;
@@ -208,7 +212,8 @@ begin
     Result := JsonData.AsInt64
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     Result := Default;
   end;
 end;
@@ -222,7 +227,8 @@ begin
     Result := JsonData.AsInteger
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     Result := Default;
   end;
 end;
@@ -236,7 +242,8 @@ begin
     Result := JsonData.Clone as TJSONArray
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     if Assigned(Default) then
       Result := Default.Clone as TJSONArray
     else
@@ -253,7 +260,8 @@ begin
     Result := JsonData.Clone as TJSONObject
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     if Assigned(Default) then
       Result := Default.Clone as TJSONObject
     else
@@ -270,7 +278,8 @@ begin
     Result := JsonData.AsString
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+     SetValue(Key, Default);
     Result := Default;
   end;
 end;
