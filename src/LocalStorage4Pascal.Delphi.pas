@@ -14,15 +14,16 @@ type
   private
     FStorage: TJSONObject;
     FFilePath: string;
+    fSaveToFileDefaultValues: Boolean;
     function GetStoragePath(const FileName: string = 'localstorage.json'): string;
     procedure LoadFromFile;
     procedure SaveToFile;
     function GetValue<T>(const Key: string; Default: T): T;
     function SetValue<T>(const Key: string; const Value: T): T; overload;
   public
-    constructor Create(const FileName: string = 'LocalStorage.json');
+    constructor Create(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: boolean = false);
     destructor Destroy; override;
-    class function New(const FileName: string = 'LocalStorage.json'): iLocalStorage4Pascal;
+    class function New(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: boolean = false): iLocalStorage4Pascal;
     procedure SetValue(const Key: string; const Value: string); overload;
     procedure SetValue(const Key: string; const Value: Integer); overload;
     procedure SetValue(const Key: string; const Value: Boolean); overload;
@@ -65,7 +66,8 @@ begin
     Result := FStorage.Values[Key].AsType<T>
   else
   begin
-    SetValue(Key, Default);
+    if(fSaveToFileDefaultValues)then
+      SetValue(Key, Default);
     Result := Default;
   end;
 end;
@@ -171,10 +173,11 @@ begin
   end;
 end;
 
-constructor TLocalStorage4Pascal.Create(const FileName: string);
+constructor TLocalStorage4Pascal.Create(const FileName: string; SaveToFileDefaultValues: boolean);
 begin
   FFilePath := GetStoragePath(FileName);
   FStorage := TJSONObject.Create;
+  fSaveToFileDefaultValues := SaveToFileDefaultValues;
   LoadFromFile;
 end;
 
@@ -185,9 +188,9 @@ begin
   inherited;
 end;
 
-class function TLocalStorage4Pascal.New(const FileName: string): iLocalStorage4Pascal;
+class function TLocalStorage4Pascal.New(const FileName: string; SaveToFileDefaultValues: boolean): iLocalStorage4Pascal;
 begin
-  Result := TLocalStorage4Pascal.Create(FileName);
+  Result := TLocalStorage4Pascal.Create(FileName, SaveToFileDefaultValues);
 end;
 
 function TLocalStorage4Pascal.Clear: Boolean;
