@@ -20,6 +20,10 @@ type
     procedure SaveToFile;
     function GetValue<T>(const Key: string; Default: T): T;
     function SetValue<T>(const Key: string; const Value: T): T; overload;
+    function ToBase64(const Input: string): string;
+    function FromBase64(const Input: string): string;
+    function EncryptString(const Input: string; const Key: string): string;
+    function DecryptString(const Input: string; const Key: string): string;
   public
     constructor Create(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: boolean = false);
     destructor Destroy; override;
@@ -31,6 +35,8 @@ type
     procedure SetValue(const Key: string; const Value: TJSONObject); overload;
     procedure SetValue(const Key: string; const Value: TJSONArray); overload;
     procedure SetValue(const Key: string; const Value: Int64); overload;
+    procedure SetValue(const Key: string; const Value: string; const SecretKey: string); overload;
+    procedure SetValue(const Key: string; const Value: TDateTime); overload;
 
     function GetString(const Key: string; const Default: string = ''): string;
     function GetInteger(const Key: string; const Default: Integer = 0): Integer;
@@ -39,6 +45,8 @@ type
     function GetJSONObject(const Key: string; const Default: TJSONObject = nil): TJSONObject;
     function GetJSONArray(const Key: string; const Default: TJSONArray = nil): TJSONArray;
     function GetInt64(const Key: string; const Default: Int64 = 0): Int64;
+    function GetEncryptedString(const Key: string; const SecretKey: string): string;
+    function GetDateTime(const Key: string; const Default: TDateTime): TDateTime;
 
     function RemoveValue(const Key: string): Boolean;
     function KeyExists(const Key: string): Boolean;
@@ -56,7 +64,8 @@ implementation
 uses
   System.IOUtils,
   System.TypInfo,
-  System.Rtti;
+  System.Rtti,
+  System.NetEncoding;
 
 { TLocalStorage4Pascal }
 
@@ -95,7 +104,12 @@ begin
       tkInt64:
         FStorage.AddPair(Key, StoredValue.AsInt64);
       tkFloat:
-        FStorage.AddPair(Key, StoredValue.AsExtended);
+        if(PTypeInfo(TypeInfo(T))^.Name = 'TDateTime')then
+         begin
+
+         end
+        else
+         FStorage.AddPair(Key, StoredValue.AsExtended);
       tkUString, tkString, tkLString:
         FStorage.AddPair(Key, StoredValue.AsString);
       tkWString:
@@ -110,6 +124,11 @@ begin
 
   SaveToFile;
   Result := T(Value);
+end;
+
+function TLocalStorage4Pascal.ToBase64(const Input: string): string;
+begin
+  Result := TNetEncoding.Base64.Encode(Input);
 end;
 
 function TLocalStorage4Pascal.Version: string;
@@ -181,11 +200,50 @@ begin
   LoadFromFile;
 end;
 
+function TLocalStorage4Pascal.DecryptString(const Input, Key: string): string;
+var
+  EachChar : Integer;
+  KeyPos   : Integer;
+begin
+  Result := '';
+  KeyPos := 1;
+
+  for EachChar := 1 to Length(Input) do
+  begin
+    Result := Result + Char(Byte(Input[EachChar]) xor Byte(Key[KeyPos]));
+    Inc(KeyPos);
+    if KeyPos > Length(Key) then
+      KeyPos := 1;
+  end;
+end;
+
 destructor TLocalStorage4Pascal.Destroy;
 begin
   SaveToFile;
   FreeAndNil(FStorage);
   inherited;
+end;
+
+function TLocalStorage4Pascal.EncryptString(const Input, Key: string): string;
+var
+  EachChar: Integer;
+  KeyPos: Integer;
+begin
+  Result := '';
+  KeyPos := 1;
+
+  for EachChar := 1 to Length(Input) do
+  begin
+    Result := Result + Char(Byte(Input[EachChar]) xor Byte(Key[KeyPos]));
+    Inc(KeyPos);
+    if KeyPos > Length(Key) then
+      KeyPos := 1;
+  end;
+end;
+
+function TLocalStorage4Pascal.FromBase64(const Input: string): string;
+begin
+  Result := TNetEncoding.Base64.Decode(Input);
 end;
 
 class function TLocalStorage4Pascal.New(const FileName: string; SaveToFileDefaultValues: boolean): iLocalStorage4Pascal;
@@ -214,9 +272,25 @@ begin
   Result := GetValue<Boolean>(Key, Default);
 end;
 
+function TLocalStorage4Pascal.GetDateTime(const Key: string;
+  const Default: TDateTime): TDateTime;
+begin
+
+end;
+
 function TLocalStorage4Pascal.GetDouble(const Key: string; const Default: Double): Double;
 begin
   Result := GetValue<Double>(Key, Default);
+end;
+
+function TLocalStorage4Pascal.GetEncryptedString(const Key,SecretKey: string): string;
+begin
+  Result := GetValue<String>(Key, '');
+
+  if(Result <> '')then
+   begin
+     Result := DecryptString(FromBase64(Result), SecretKey);
+   end;
 end;
 
 function TLocalStorage4Pascal.GetInt64(const Key: string; const Default: Int64): Int64;
@@ -317,5 +391,25 @@ begin
 end;
 
 {$ENDIF}
+
+procedure TLocalStorage4Pascal.SetValue(const Key, Value, SecretKey: string);
+var
+  EncryptedValue : string;
+begin
+  EncryptedValue := '';
+
+  if(Value <> '')then
+   begin
+     EncryptedValue := ToBase64(EncryptString(Value, SecretKey));
+   end;
+
+   SetValue<String>(key, EncryptedValue);
+end;
+
+procedure TLocalStorage4Pascal.SetValue(const Key: string;
+  const Value: TDateTime);
+begin
+
+end;
 
 end.

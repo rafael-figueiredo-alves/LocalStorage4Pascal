@@ -22,6 +22,8 @@ type
     procedure SetValue(const Key: string; const Value: TJSONObject); overload;
     procedure SetValue(const Key: string; const Value: TJSONArray); overload;
     procedure SetValue(const Key: string; const Value: Int64); overload;
+    procedure SetValue(const Key: string; const Value: string; const SecretKey: string); overload;
+    procedure SetValue(const Key: string; const Value: TDateTime); overload;
     {$endregion}
 
     {$region 'GetValue Methods'}
@@ -32,6 +34,8 @@ type
     function GetJSONObject(const Key: string; const Default: TJSONObject = nil): TJSONObject;
     function GetJSONArray(const Key: string; const Default: TJSONArray = nil): TJSONArray;
     function GetInt64(const Key: string; const Default: Int64 = 0): Int64;
+    function GetEncryptedString(const Key: string; const SecretKey: string): string;
+    function GetDateTime(const Key: string; const Default: TDateTime): TDateTime;
     {$endregion}
 
     function RemoveValue(const Key: string): Boolean;
