@@ -106,7 +106,7 @@ begin
       tkFloat:
         if(PTypeInfo(TypeInfo(T))^.Name = 'TDateTime')then
          begin
-
+          FStorage.AddPair(Key, '');
          end
         else
          FStorage.AddPair(Key, StoredValue.AsExtended);
@@ -272,10 +272,9 @@ begin
   Result := GetValue<Boolean>(Key, Default);
 end;
 
-function TLocalStorage4Pascal.GetDateTime(const Key: string;
-  const Default: TDateTime): TDateTime;
+function TLocalStorage4Pascal.GetDateTime(const Key: string;const Default: TDateTime): TDateTime;
 begin
-
+  Result := GetValue<TDateTime>(Key, Default);
 end;
 
 function TLocalStorage4Pascal.GetDouble(const Key: string; const Default: Double): Double;
@@ -406,10 +405,9 @@ begin
    SetValue<String>(key, EncryptedValue);
 end;
 
-procedure TLocalStorage4Pascal.SetValue(const Key: string;
-  const Value: TDateTime);
+procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: TDateTime);
 begin
-
+  SetValue<TDateTime>(Key, Value);
 end;
 
 end.
