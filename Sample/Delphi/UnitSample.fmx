@@ -328,5 +328,13 @@ object FormMain: TFormMain
         end
       end
     end
+    object Button1: TButton
+      Position.X = 96.000000000000000000
+      Position.Y = 456.000000000000000000
+      TabOrder = 8
+      Text = 'Button1'
+      TextSettings.Trimming = None
+      OnClick = Button1Click
+    end
   end
 end

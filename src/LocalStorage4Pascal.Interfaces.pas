@@ -24,6 +24,8 @@ type
     procedure SetValue(const Key: string; const Value: Int64); overload;
     procedure SetValue(const Key: string; const Value: string; const SecretKey: string); overload;
     procedure SetValue(const Key: string; const Value: TDateTime); overload;
+    procedure SetValue(const Key: string; const Value: TDate); overload;
+    procedure SetValue(const Key: string; const Value: TTime); overload;
     {$endregion}
 
     {$region 'GetValue Methods'}
@@ -36,6 +38,8 @@ type
     function GetInt64(const Key: string; const Default: Int64 = 0): Int64;
     function GetEncryptedString(const Key: string; const SecretKey: string): string;
     function GetDateTime(const Key: string; const Default: TDateTime): TDateTime;
+    function GetDate(const Key: string; const Default: TDate): TDate;
+    function GetTime(const Key: string; const Default: TTime): TTime;
     {$endregion}
 
     function RemoveValue(const Key: string): Boolean;

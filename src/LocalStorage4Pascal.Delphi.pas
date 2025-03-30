@@ -24,6 +24,9 @@ type
     function FromBase64(const Input: string): string;
     function EncryptString(const Input: string; const Key: string): string;
     function DecryptString(const Input: string; const Key: string): string;
+    function DateTimeToISO8601(const ADateTime: TDateTime): string;
+    function DateToISO8601(const ADate: TDate): string;
+    function TimeToISO8601(const ATime: TTime): string;
   public
     constructor Create(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: boolean = false);
     destructor Destroy; override;
@@ -37,6 +40,8 @@ type
     procedure SetValue(const Key: string; const Value: Int64); overload;
     procedure SetValue(const Key: string; const Value: string; const SecretKey: string); overload;
     procedure SetValue(const Key: string; const Value: TDateTime); overload;
+    procedure SetValue(const Key: string; const Value: TDate); overload;
+    procedure SetValue(const Key: string; const Value: TTime); overload;
 
     function GetString(const Key: string; const Default: string = ''): string;
     function GetInteger(const Key: string; const Default: Integer = 0): Integer;
@@ -47,6 +52,8 @@ type
     function GetInt64(const Key: string; const Default: Int64 = 0): Int64;
     function GetEncryptedString(const Key: string; const SecretKey: string): string;
     function GetDateTime(const Key: string; const Default: TDateTime): TDateTime;
+    function GetDate(const Key: string; const Default: TDate): TDate;
+    function GetTime(const Key: string; const Default: TTime): TTime;
 
     function RemoveValue(const Key: string): Boolean;
     function KeyExists(const Key: string): Boolean;
@@ -105,11 +112,15 @@ begin
         FStorage.AddPair(Key, StoredValue.AsInt64);
       tkFloat:
         if(PTypeInfo(TypeInfo(T))^.Name = 'TDateTime')then
-         begin
-          FStorage.AddPair(Key, '');
-         end
+          FStorage.AddPair(Key, DateTimeToISO8601(StoredValue.AsType<TDateTime>))
         else
-         FStorage.AddPair(Key, StoredValue.AsExtended);
+         if(PTypeInfo(TypeInfo(T))^.Name = 'TTime')then
+          FStorage.AddPair(Key, StoredValue.AsExtended)  //TimeToISO8601(StoredValue.AsType<TTime>))
+         else
+          if(PTypeInfo(TypeInfo(T))^.Name = 'TDate')then
+           FStorage.AddPair(Key, DateToISO8601(StoredValue.AsType<TDate>))
+          else
+            FStorage.AddPair(Key, StoredValue.AsExtended);
       tkUString, tkString, tkLString:
         FStorage.AddPair(Key, StoredValue.AsString);
       tkWString:
@@ -124,6 +135,11 @@ begin
 
   SaveToFile;
   Result := T(Value);
+end;
+
+function TLocalStorage4Pascal.TimeToISO8601(const ATime: TTime): string;
+begin
+  Result := FormatDateTime('hh:nn:ss.zzz', ATime);
 end;
 
 function TLocalStorage4Pascal.ToBase64(const Input: string): string;
@@ -200,6 +216,16 @@ begin
   LoadFromFile;
 end;
 
+function TLocalStorage4Pascal.DateTimeToISO8601(const ADateTime: TDateTime): string;
+begin
+  Result := FormatDateTime('yyyy-mm-dd"T"hh:nn:ss.zzz"Z"', ADateTime);
+end;
+
+function TLocalStorage4Pascal.DateToISO8601(const ADate: TDate): string;
+begin
+  Result := FormatDateTime('yyyy-mm-dd', ADate);
+end;
+
 function TLocalStorage4Pascal.DecryptString(const Input, Key: string): string;
 var
   EachChar : Integer;
@@ -259,7 +285,7 @@ begin
   try
     for i := FStorage.Count - 1 downto 0 do
       FStorage.RemovePair(FStorage.Pairs[i].JsonString.Value).Free; // Libera cada item
-      
+
     SaveToFile;
     Result := True;
   except
@@ -270,6 +296,11 @@ end;
 function TLocalStorage4Pascal.GetBoolean(const Key: string; const Default: Boolean): Boolean;
 begin
   Result := GetValue<Boolean>(Key, Default);
+end;
+
+function TLocalStorage4Pascal.GetDate(const Key: string;const Default: TDate): TDate;
+begin
+  Result := GetValue<TDate>(Key, Default);
 end;
 
 function TLocalStorage4Pascal.GetDateTime(const Key: string;const Default: TDateTime): TDateTime;
@@ -331,6 +362,11 @@ end;
 function TLocalStorage4Pascal.GetString(const Key: string; const Default: string): string;
 begin
   Result := GetValue<string>(Key, Default);
+end;
+
+function TLocalStorage4Pascal.GetTime(const Key: string;const Default: TTime): TTime;
+begin
+  Result := GetValue<TTime>(Key, Default);
 end;
 
 function TLocalStorage4Pascal.KeyExists(const Key: string): Boolean;
@@ -408,6 +444,16 @@ end;
 procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: TDateTime);
 begin
   SetValue<TDateTime>(Key, Value);
+end;
+
+procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: TTime);
+begin
+  SetValue<TTime>(Key, Value);
+end;
+
+procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: TDate);
+begin
+  SetValue<TDate>(Key, Value);
 end;
 
 end.

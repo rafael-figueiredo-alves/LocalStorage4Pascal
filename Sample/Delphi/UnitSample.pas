@@ -45,9 +45,11 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Layout11: TLayout;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
     procedure btLimparClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     procedure LerDadosDoLocaStorage;
@@ -76,6 +78,24 @@ end;
 procedure TFormMain.btSalvarClick(Sender: TObject);
 begin
   GravarDadosDoLocalStorage;
+end;
+
+procedure TFormMain.Button1Click(Sender: TObject);
+var
+  DataHoje : TTime;
+  DataRec  : TTime;
+begin
+
+  DataHoje := Now;
+
+  ShowMessage(Timetostr(DataHoje));
+
+  LocalStorage4Delphi.SetValue('HoraRec', DataHoje);
+
+  DataRec := LocalStorage4Delphi.GetTime('HoraRec', now - 5);
+
+   showmessage(Timetostr(DataRec));
+
 end;
 
 procedure TFormMain.FormCreate(Sender: TObject);
