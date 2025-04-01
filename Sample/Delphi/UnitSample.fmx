@@ -55,7 +55,7 @@ object FormMain: TFormMain
       Size.Width = 360.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 7
+      TabOrder = 8
       object Label1: TLabel
         Align = Left
         Size.Width = 120.000000000000000000
@@ -84,7 +84,7 @@ object FormMain: TFormMain
       Size.Width = 360.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 2
+      TabOrder = 3
       object Label2: TLabel
         Align = Left
         Size.Width = 120.000000000000000000
@@ -113,7 +113,7 @@ object FormMain: TFormMain
       Size.Width = 360.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 1
+      TabOrder = 2
       object Label3: TLabel
         Align = Left
         Size.Width = 120.000000000000000000
@@ -141,7 +141,7 @@ object FormMain: TFormMain
     end
     object Layout4: TLayout
       Align = Top
-      Position.Y = 120.000000000000000000
+      Position.Y = 160.000000000000000000
       Size.Width = 360.000000000000000000
       Size.Height = 121.000000000000000000
       Size.PlatformDefault = False
@@ -216,11 +216,11 @@ object FormMain: TFormMain
     end
     object Layout7: TLayout
       Align = Top
-      Position.Y = 309.000000000000000000
+      Position.Y = 349.000000000000000000
       Size.Width = 360.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 6
+      TabOrder = 7
       object btSalvar: TButton
         Align = Center
         Size.Width = 219.000000000000000000
@@ -234,11 +234,11 @@ object FormMain: TFormMain
     end
     object Layout8: TLayout
       Align = Top
-      Position.Y = 349.000000000000000000
+      Position.Y = 389.000000000000000000
       Size.Width = 360.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 5
+      TabOrder = 6
       object btLimpar: TButton
         Align = Center
         Size.Width = 219.000000000000000000
@@ -252,11 +252,11 @@ object FormMain: TFormMain
     end
     object Layout9: TLayout
       Align = Top
-      Position.Y = 389.000000000000000000
+      Position.Y = 429.000000000000000000
       Size.Width = 360.000000000000000000
       Size.Height = 40.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 3
+      TabOrder = 4
       object LibVersion: TLabel
         Align = Center
         Size.Width = 312.000000000000000000
@@ -268,11 +268,11 @@ object FormMain: TFormMain
     end
     object Layout10: TLayout
       Align = Top
-      Position.Y = 241.000000000000000000
+      Position.Y = 281.000000000000000000
       Size.Width = 360.000000000000000000
       Size.Height = 68.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 4
+      TabOrder = 5
       object Edit1: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         Align = Left
@@ -328,13 +328,35 @@ object FormMain: TFormMain
         end
       end
     end
-    object Button1: TButton
-      Position.X = 96.000000000000000000
-      Position.Y = 456.000000000000000000
-      TabOrder = 8
-      Text = 'Button1'
-      TextSettings.Trimming = None
-      OnClick = Button1Click
+    object Layout12: TLayout
+      Align = Top
+      Position.Y = 120.000000000000000000
+      Size.Width = 360.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lblDataHora: TLabel
+        Align = Left
+        Size.Width = 120.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'Campo DataHora: '
+        TabOrder = 0
+      end
+      object edDateTime: TDateEdit
+        Date = 45747.000000000000000000
+        Format = 'dd/MM/yyyy'
+        Align = Client
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 220.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+      end
     end
   end
 end

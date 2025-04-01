@@ -50,7 +50,7 @@ type
   end;
 
 const
-  LocaStorage4Pascal_Version = '1.0.0';
+  LocaStorage4Pascal_Version = '1.1.0';
 
 implementation
 

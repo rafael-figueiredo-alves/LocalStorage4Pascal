@@ -115,7 +115,7 @@ begin
           FStorage.AddPair(Key, DateTimeToISO8601(StoredValue.AsType<TDateTime>))
         else
          if(PTypeInfo(TypeInfo(T))^.Name = 'TTime')then
-          FStorage.AddPair(Key, StoredValue.AsExtended)  //TimeToISO8601(StoredValue.AsType<TTime>))
+          FStorage.AddPair(Key, TimeToISO8601(StoredValue.AsType<TTime>))
          else
           if(PTypeInfo(TypeInfo(T))^.Name = 'TDate')then
            FStorage.AddPair(Key, DateToISO8601(StoredValue.AsType<TDate>))
@@ -365,8 +365,12 @@ begin
 end;
 
 function TLocalStorage4Pascal.GetTime(const Key: string;const Default: TTime): TTime;
+var
+ TimeFromCache: string;
 begin
-  Result := GetValue<TTime>(Key, Default);
+   TimeFromCache := GetValue<string>(Key, TimeToISO8601(Default));
+
+   Result := StrToTime(TimeFromCache);
 end;
 
 function TLocalStorage4Pascal.KeyExists(const Key: string): Boolean;

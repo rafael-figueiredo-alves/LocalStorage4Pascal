@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Layouts, FMX.Effects, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit,
-  FMX.EditBox, FMX.SpinBox;
+  FMX.EditBox, FMX.SpinBox, FMX.DateTimeCtrls;
 
 type
   TFormMain = class(TForm)
@@ -45,11 +45,12 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Layout11: TLayout;
-    Button1: TButton;
+    Layout12: TLayout;
+    lblDataHora: TLabel;
+    edDateTime: TDateEdit;
     procedure FormCreate(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
     procedure btLimparClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
     procedure LerDadosDoLocaStorage;
@@ -80,24 +81,6 @@ begin
   GravarDadosDoLocalStorage;
 end;
 
-procedure TFormMain.Button1Click(Sender: TObject);
-var
-  DataHoje : TTime;
-  DataRec  : TTime;
-begin
-
-  DataHoje := Now;
-
-  ShowMessage(Timetostr(DataHoje));
-
-  LocalStorage4Delphi.SetValue('HoraRec', DataHoje);
-
-  DataRec := LocalStorage4Delphi.GetTime('HoraRec', now - 5);
-
-   showmessage(Timetostr(DataRec));
-
-end;
-
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
   LibVersion.Text := 'LocalStorage4Pascal - version ' + LocalStorage4Delphi.Version;
@@ -113,6 +96,7 @@ begin
   LocalStorage4Delphi.SetValue('chBool', chBool.IsChecked);
   LocalStorage4Delphi.SetValue('EdString', EdString.Text);
   LocalStorage4Delphi.SetValue('EdFloat', EdFloat.Value);
+  LocalStorage4Delphi.SetValue('DataHora', edDateTime.DateTime);
 
   ClasseJS := TJSONObject.Create;
   ClasseJS.AddPair('Nome', EdJSNome.Text);
@@ -139,6 +123,7 @@ begin
   chBool.IsChecked := LocalStorage4Delphi.GetBoolean('chBool', false);
   EdString.Text    := LocalStorage4Delphi.GetString('EdString', '');
   EdFloat.Value    := LocalStorage4Delphi.GetDouble('EdFloat', 3.14);
+  edDateTime.DateTime := LocalStorage4Delphi.GetDateTime('DataHora', now);
 
   classeJS := LocalStorage4Delphi.GetJSONObject('JSObj', TJSONObject.Create(TJSONPair.Create('Nome', 'Rafael')).AddPair('Apelido', 'DevPegasus'));
 
