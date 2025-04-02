@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 328
-  Height = 768
-  Top = 149
+  Left = 356
+  Height = 870
+  Top = 47
   Width = 443
   Caption = 'Form1'
-  ClientHeight = 768
+  ClientHeight = 870
   ClientWidth = 443
   Color = clWhite
   DesignTimePPI = 120
@@ -40,7 +40,7 @@ object Form1: TForm1
   object BtSalvar: TButton
     Left = 30
     Height = 39
-    Top = 530
+    Top = 719
     Width = 383
     Align = alTop
     BorderSpacing.Left = 30
@@ -166,7 +166,7 @@ object Form1: TForm1
   object GroupBox1: TGroupBox
     Left = 0
     Height = 155
-    Top = 237
+    Top = 426
     Width = 443
     Align = alTop
     Caption = 'Registro Objeto JSON'
@@ -259,7 +259,7 @@ object Form1: TForm1
   object Panel6: TPanel
     Left = 0
     Height = 128
-    Top = 392
+    Top = 581
     Width = 443
     Align = alTop
     ClientHeight = 128
@@ -369,7 +369,7 @@ object Form1: TForm1
   object BtLimpar: TButton
     Left = 30
     Height = 39
-    Top = 579
+    Top = 768
     Width = 383
     Align = alTop
     BorderSpacing.Left = 30
@@ -383,7 +383,7 @@ object Form1: TForm1
   object LblVersao: TLabel
     Left = 30
     Height = 28
-    Top = 628
+    Top = 817
     Width = 383
     Align = alTop
     Alignment = taCenter
@@ -399,13 +399,154 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object Button1: TButton
-    Left = 97
-    Height = 31
-    Top = 672
-    Width = 94
-    Caption = 'Button1'
-    OnClick = Button1Click
+  object Panel9: TPanel
+    Left = 0
+    Height = 63
+    Top = 237
+    Width = 443
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 443
     TabOrder = 7
+    object Label8: TLabel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 148
+      Align = alLeft
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Campo DateTime:'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object edDateTime: TDateTimePicker
+      Left = 168
+      Height = 43
+      Top = 10
+      Width = 255
+      CenturyFrom = 1941
+      MaxDate = 2958465
+      MinDate = -53780
+      TabOrder = 0
+      BorderSpacing.Left = 20
+      BorderSpacing.Top = 10
+      BorderSpacing.Right = 20
+      BorderSpacing.Bottom = 10
+      TrailingSeparator = False
+      TextForNullDate = 'NULL'
+      LeadingZeros = True
+      Align = alClient
+      Kind = dtkDateTime
+      TimeFormat = tf24
+      TimeDisplay = tdHMS
+      DateMode = dmComboBox
+      Date = 45748
+      Time = 0.905722453702765
+      UseDefaultSeparators = True
+      HideDateTimeParts = []
+      MonthNames = 'Long'
+    end
+  end
+  object Panel10: TPanel
+    Left = 0
+    Height = 63
+    Top = 300
+    Width = 443
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 443
+    TabOrder = 8
+    object Label9: TLabel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 148
+      Align = alLeft
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Campo Time:'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object edTime: TDateTimePicker
+      Left = 168
+      Height = 43
+      Top = 10
+      Width = 255
+      CenturyFrom = 1941
+      MaxDate = 2958465
+      MinDate = -53780
+      TabOrder = 0
+      BorderSpacing.Left = 20
+      BorderSpacing.Top = 10
+      BorderSpacing.Right = 20
+      BorderSpacing.Bottom = 10
+      TrailingSeparator = False
+      TextForNullDate = 'NULL'
+      LeadingZeros = True
+      Align = alClient
+      Kind = dtkTime
+      TimeFormat = tf24
+      TimeDisplay = tdHMS
+      DateMode = dmComboBox
+      Date = 45748
+      Time = 0.905722453702765
+      UseDefaultSeparators = True
+      HideDateTimeParts = []
+      MonthNames = 'Long'
+    end
+  end
+  object Panel11: TPanel
+    Left = 0
+    Height = 63
+    Top = 363
+    Width = 443
+    Align = alTop
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 443
+    TabOrder = 9
+    object Label10: TLabel
+      Left = 0
+      Height = 63
+      Top = 0
+      Width = 148
+      Align = alLeft
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Campo Date:'
+      Layout = tlCenter
+      ParentColor = False
+    end
+    object edDate: TDateTimePicker
+      Left = 168
+      Height = 43
+      Top = 10
+      Width = 255
+      CenturyFrom = 1941
+      MaxDate = 2958465
+      MinDate = -53780
+      TabOrder = 0
+      BorderSpacing.Left = 20
+      BorderSpacing.Top = 10
+      BorderSpacing.Right = 20
+      BorderSpacing.Bottom = 10
+      TrailingSeparator = False
+      TextForNullDate = 'NULL'
+      LeadingZeros = True
+      Align = alClient
+      Kind = dtkDate
+      TimeFormat = tf24
+      TimeDisplay = tdHMS
+      DateMode = dmComboBox
+      Date = 45748
+      Time = 0.905722453702765
+      UseDefaultSeparators = True
+      HideDateTimeParts = []
+      MonthNames = 'Long'
+    end
   end
 end

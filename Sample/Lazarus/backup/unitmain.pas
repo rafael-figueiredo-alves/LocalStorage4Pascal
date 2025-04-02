@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Spin;
+  Spin, DateTimePicker;
 
 type
 
@@ -15,8 +15,10 @@ type
   TForm1 = class(TForm)
     BtSalvar: TButton;
     BtLimpar: TButton;
-    Button1: TButton;
     chBool: TCheckBox;
+    edDateTime: TDateTimePicker;
+    edTime: TDateTimePicker;
+    edDate: TDateTimePicker;
     EdNum1: TEdit;
     EdNum2: TEdit;
     EdNum3: TEdit;
@@ -26,6 +28,7 @@ type
     EdApelido: TEdit;
     GroupBox1: TGroupBox;
     Label1: TLabel;
+    Label10: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -33,8 +36,12 @@ type
     Label6: TLabel;
     Label7: TLabel;
     displayARRAY: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
     LblVersao: TLabel;
     Panel1: TPanel;
+    Panel10: TPanel;
+    Panel11: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
@@ -42,10 +49,10 @@ type
     Panel6: TPanel;
     Panel7: TPanel;
     Panel8: TPanel;
+    Panel9: TPanel;
     Shape1: TShape;
     procedure BtLimparClick(Sender: TObject);
     procedure BtSalvarClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     procedure GravarDadosDoLocalStorage;
@@ -71,38 +78,6 @@ begin
   GravarDadosDoLocalStorage;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-const
-  SecretKey: string = '123456789';
-var
-  encString: string;
-  DataHoraRec  : TDateTime;
-  HoraRec      : ttime;
-  DataRec      : TDate;
-begin
-  encString := 'Ola, mundo do Lazarus';
-
-  ShowMessage(encString);
-  ShowMessage(DateTimeToStr(now));
-  ShowMessage(DateToStr(now));
-  ShowMessage(TimeToStr(now));
-
-  LocalStorage4Lazarus.SetValue('EncString', encString, SecretKey);
-  LocalStorage4Lazarus.SetValue('DataHora', now);
-  LocalStorage4Lazarus.SetValue('Data', StrToDate('23/01/2021'));
-  LocalStorage4Lazarus.SetValue('Hora', StrToTime('11:28:45'));
-
-  encString := LocalStorage4Lazarus.GetEncryptedString('EncString', SecretKey);
-  DataHoraRec:= LocalStorage4Lazarus.GetDateTime('DataHora', now);
-  DataRec:= LocalStorage4Lazarus.GetDate('Data', StrToDate('29/02/2024'));
-  HoraRec:= LocalStorage4Lazarus.GetTime('Hora', StrToTime('19:38:43'));
-
-  ShowMessage(encString);
-  ShowMessage(DateTimeToStr(DataHoraRec));
-  ShowMessage(DateToStr(DataRec));
-  ShowMessage(TimeToStr(HoraRec));
-end;
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   LblVersao.Caption := 'LocalStorage4Pascal - version ' + LocalStorage4Lazarus.Version;
@@ -125,6 +100,9 @@ begin
   LocalStorage4Lazarus.SetValue('chBool', chBool.Checked);
   LocalStorage4Lazarus.SetValue('EdString', EdString.Text);
   LocalStorage4Lazarus.SetValue('EdFloat', EdFloat.Value);
+  LocalStorage4Lazarus.SetValue('DataHora', edDateTime.DateTime);
+  LocalStorage4Lazarus.SetValue('DataOnly', edDate.Date);
+  LocalStorage4Lazarus.SetValue('TimeOnly', edTime.Time);
 
   ClasseJS := TJSONObject.Create;
   ClasseJS.Add('Nome', EdNome.Text);

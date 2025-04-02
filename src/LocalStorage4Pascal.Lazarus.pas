@@ -31,6 +31,8 @@ type
     function DateTimeToISO8601(const ADateTime: TDateTime): string;
     function DateToISO8601(const ADate: TDate): string;
     function TimeToISO8601(const ATime: TTime): string;
+    procedure SetTimeValue(const Key: string; const Value: TTime);
+    procedure SetDateValue(const Key: string; const Value: TDate);
   public
     constructor Create(const FileName: string = 'LocalStorage.json'; SaveToFileDefaultValues: Boolean = false);
     destructor Destroy; override;
@@ -202,17 +204,35 @@ end;
 
 function TLocalStorage4Pascal.DateTimeToISO8601(const ADateTime: TDateTime): string;
 begin
-  Result := FormatDateTime('yyyy-mm-dd"T"hh:nn:ss.zzz"Z"', ADateTime);
+  Result := DateTimeToStr(ADateTime);
 end;
 
 function TLocalStorage4Pascal.DateToISO8601(const ADate: TDate): string;
 begin
-  Result := FormatDateTime('yyyy-mm-dd', ADate);
+  Result := DateToStr(ADate);
 end;
 
 function TLocalStorage4Pascal.TimeToISO8601(const ATime: TTime): string;
 begin
-  Result := FormatDateTime('hh:nn:ss.zzz', ATime);
+  Result := TimeToStr(ATime);
+end;
+
+procedure TLocalStorage4Pascal.SetTimeValue(const Key: string;const Value: TTime);
+begin
+  FStorage.Delete(Key);
+
+  FStorage.Add(Key, TimeToISO8601(Value));
+
+  SaveToFile;
+end;
+
+procedure TLocalStorage4Pascal.SetDateValue(const Key: string;const Value: TDate);
+begin
+  FStorage.Delete(Key);
+
+  FStorage.Add(Key, DateToISO8601(Value));
+
+  SaveToFile;
 end;
 
 constructor TLocalStorage4Pascal.Create(const FileName: string; SaveToFileDefaultValues: Boolean);
@@ -528,11 +548,20 @@ end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string;const Value: TDateTime);
 begin
-  FStorage.Delete(Key);
+    // Precisamos de uma heurística adicional para diferenciar
+    if (Value = Trunc(Value)) and (Frac(Value) = 0) then
+      SetDateValue(Key, Value) // Apenas data (parte inteira)
+    else if (Trunc(Value) = 0) and (Frac(Value) > 0) then
+      SetTimeValue(Key, Value) // Apenas hora (parte fracionária)
+    else
+      begin
+        FStorage.Delete(Key);
 
-  FStorage.Add(Key, DateTimeToISO8601(Value));
+        FStorage.Add(Key, DateTimeToISO8601(Value));
 
-  SaveToFile;
+        SaveToFile;
+      end;
+
 end;
 
 procedure TLocalStorage4Pascal.SetValue(const Key: string; const Value: TDate);

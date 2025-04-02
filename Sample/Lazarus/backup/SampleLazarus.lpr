@@ -19,7 +19,7 @@ begin
   RequireDerivedFormResource:=True;
   Application.Scaled:=True;
   Application.Initialize;
-  InitLocalStorage4Pascal('SampleLazarus.json');
+  TLocalStorage.InitLocalStorage4Pascal('SampleLazarus.json');
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

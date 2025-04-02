@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, unitMain, LocalStorage4Pascal
+  Forms, datetimectrls, unitMain, LocalStorage4Pascal
   { you can add units after this };
 
 {$R *.res}
