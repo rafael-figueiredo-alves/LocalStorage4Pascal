@@ -1,6 +1,6 @@
 # LocalStorage4Pascal
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 
 **LocalStorage4Pascal** é uma biblioteca para Delphi e Lazarus que implementa uma função semelhante ao `LocalStorage` de navegadores, permitindo o armazenamento persistente de dados em aplicações desktop e mobile. Por que usar SQLite para guardar dados, especialmente para cache de resultados de consultas a API se podes salvar como se estivesse no Browser. Guarde Token, preferência de tema e dados não sensíveis num arquivo no formato JSON e leia seus valores de forma prática, com métodos que retornam não só string, mas também boolean, double, integer, int64, TJsonObject e TJsonArray.
 
@@ -63,7 +63,7 @@ O **BOSS** é um gerenciador de pacotes para Delphi e Lazarus.
 
 # LocalStorage4Pascal (English)
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 
 **LocalStorage4Pascal** is a library for Delphi and Lazarus that implements a `LocalStorage`-like feature, allowing persistent data storage in desktop and mobile applications. Why use SQLite to store data, especially for caching API query results, if you can save it as if it were in the browser. Store Token, theme preference and non-sensitive data in a JSON file and read their values ​​conveniently, with methods that return not only string, but also boolean, double, integer, int64, TJsonObject and TJsonArray.
 
